@@ -11,25 +11,72 @@
 # middle tab shows the coffee place
 
 import sqlite3
-from flask import Flask, jsonify, render_template, request
+from flask import Flask, jsonify, render_template, request, url_for, redirect
 from flask_sqlalchemy import SQLAlchemy
 import connexion
 import requests
 from flask import abort
 
-app = connexion.App(__name__, specification_dir='./')
-app.add_api('swagger.yml')
-
-
+# app = connexion.App(__name__, specification_dir='./')
+# app.add_api('swagger.yml')
+#
+#
 # con = sqlite3.connect('673 [assignment_file] Cafe and Wifi Website.db')
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///cafes.db'
+# cur = con.cursor()
+# cur.execute('SELECT * FROM cafe')
+# cafe = cur.fetchall()
+#
+#
+# columns = [
+#     ''
+# ]
+# for person_data in  coloum:
+#     insert_cmd = f'INSERT INTO cafe VALUES ({person_data})'
+#     conn.execute(insert_cmd)
+#
+# create_table_cmd = f"CREATE TABLE Cafe and Wifi Website ({','.join(columns)})"
+# con.execute(create_table_cmd)
+
+app = Flask(__name__)
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///673 [assignment_file] Cafe and Wifi Website.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 
+class Cafe(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(250), unique=True, nullable=False)
+    map_url = db.Column(db.String(500), nullable=False)
+    img_url = db.Column(db.String(500), nullable=False)
+    location = db.Column(db.String(250), nullable=False)
+    seats = db.Column(db.String(250), nullable=False)
+    has_toilet = db.Column(db.Boolean, nullable=False)
+    has_wifi = db.Column(db.Boolean, nullable=False)
+    has_sockets = db.Column(db.Boolean, nullable=False)
+    can_take_calls = db.Column(db.Boolean, nullable=False)
+    coffee_price = db.Column(db.String(250), nullable=True)
+
+def read_all():
+    people = Cafe.query..all()
+    return cafe_schema.dump(cafe)
+
+
 @app.route('/')
 def home():
-    return render_template('home.html')
+    return render_template('home.html',content=[Cafe])
+
+@app.route('/')
+def welcome_page():
+    return render_template('index.html')
+
+@app.route(/<name>)
+def user(name):
+    return f'Welcome Back {name}!'
+
+@app.route('/admin')
+def admin():
+    return redirect(url_for('user', name='Admin!'))
 
 if __name__ === '__main__':
-    app.run(host='0.0.0.0' port=8000, debug=True)
+    app.run(debug=True)

@@ -1,11 +1,84 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
+    <style>
+    /* body {
+      margin: 0;
+       padding: 0;
+    } */
+/*
+   #container {
+     width: :850px;
+     margin: 0 auto;
+   } */
+
+   /* #col1, #col2, #col3 {
+     width: 280px;
+     float: :left;
+     margin:10px;
+   } */
+
+   #col1 {
+   background-color: #89CFF3;
+   width: auto;
+   float: right;
+   }
+
+   #col2 {
+   background-color: #A0E9FF ;
+    width: auto;
+    float: left;
+   }
+
+   #col3 {
+   background-color: #CDF5FD ;
+    width: auto;
+    margin: 0 auto;
+   }
+    </style>
     <meta charset="utf-8">
     <title>Coffee Bro</title>
+    <!-- css styles -->
+    <link rel="stylesheet" href="static/css/styles.css">
+
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather&family=Montserrat&family=Sacramento&display=swap" rel="stylesheet">
+
   </head>
   <body>
-    <h1>Where COffe and brew's meets</h1>
+
+    <!-- <div id="container"> -->
+      <div id="col1">
+        <h1>Column</h1>
+        <p>
+gndngkl
+        </p>
+</div>
+
+      <!-- <body> -->
+        <!-- <div id="container"> -->
+          <div id="col2">
+            <h1>Column</h1>
+      {% for cup in content%}
+      <p>{{cup}}</p>
+
+      {% endfor %}
+          </div>
+          <!-- <body> -->
+
+            <!-- <div id="container"> -->
+              <div id="col3">
+                <h1>Column</h1>
+                <p>
+<h1>Where COffe and brew's meets</h1>
+                </p>
+
+              <!-- </div> -->
+
+    </div>
+
 
   </body>
 </html>

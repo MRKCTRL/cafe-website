@@ -1,0 +1,27 @@
+ body {
+   margin: 0;
+    padding: 0;
+ }
+
+#container {
+  width: :850px;
+  margin: 0 auto;
+}
+
+.col1, .col2, .col3 {
+  width: 280px;
+  float: :left;
+  margin:10px;
+}
+
+.col1 {
+background-color: #89CFF3;
+}
+
+.col2 {
+background-color: #A0E9FF ;
+}
+
+.col3 {
+background-color: #CDF5FD ;
+}

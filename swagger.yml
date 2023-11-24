@@ -26,6 +26,14 @@ components:
             type: 'string'
           lname:
             type: 'string'
+            parameters:
+    lname:
+      name: "lname"
+      description: "Last name of the person to get"
+      in: path
+      required: True
+      schema:
+        type: "string"
 
 
   # swagger.yml
@@ -33,14 +41,44 @@ components:
 # ...
 
 paths:
-  /people:
+  /people/{email}:
     get:
-      
+
     post:
       operationId: "people.read_all"
       tags:
         - "People"
       summary: "Read the list of people"
+      - $ref: '#/components/parameters/lname'
       responses:
         "200":
           description: "Successfully read people list"
+
+          put:
+      tags:
+        - People
+      operationId: "people.update"
+      summary: "Update a person"
+      parameters:
+        - $ref: "#/components/parameters/lname"
+      responses:
+        "200":
+          description: "Successfully updated person"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              x-body-name: "person"
+              $ref: "#/components/schemas/Person"
+
+
+               delete:
+      tags:
+        - People
+      operationId: "people.delete"
+      summary: "Delete a person"
+      parameters:
+        - $ref: "#/components/parameters/lname"
+      responses:
+        "204":
+          description: "Successfully deleted person"
