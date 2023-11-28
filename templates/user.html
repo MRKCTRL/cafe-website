@@ -3,7 +3,7 @@
 {% block content %}
     {% with messages = get_flased_messages() %}
     {% if messages %}
-      {% for mesg in messages %}
+      {% for msg in messages %}
           <p>{{msg}}</p>
       {% endfor %}
     {% end if %}

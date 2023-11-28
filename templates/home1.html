@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <style>
+.col1, col2, col3 {
+  float: left;
+  width: 33.33%;
+}
+.col1 {
+  background-color: red;
+}
+.col2 {
+  background-color: blue;
+}
+.col3 {
+  background-color: green; }
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+    </style>
+    <meta charset="utf-8">
+    <title>hello</title>
+  </head>
+  <body>
+    <div class="row">
+      <div class="col1">
+        <p>gsg</p>
+      </div>
+      <div class="col2">
+        <p>gsgsg</p>
+      </div>
+      <div class="col3">
+        <p>gsgsg</p>
+      </div>
+
+    </div>
+  </body>
+</html>
